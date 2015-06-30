@@ -23,3 +23,34 @@ double Particle::distanceTo(const Particle& other) const
             (_z - other._z) * (_z - other._z)
             );
 }
+
+
+System::System (size_t seed)
+{
+    _generator.seed(seed);
+    _seed = seed;
+}
+
+
+System::~System ()
+{
+}
+
+
+void System::add (const Particle& particle)
+{
+    _particles.push_back (particle);
+}
+
+
+void System::add (double x, double y, double z, double vol)
+{
+    Particle particle = Particle (x, y, z, vol);
+    add (particle);
+}
+
+
+size_t System::size () const
+{
+    return _particles.size ();
+}

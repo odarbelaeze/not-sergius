@@ -2,6 +2,10 @@
 #define SYSTEM_H_
 
 #include <cmath>
+#include <random>
+#include <vector>
+
+typedef unsigned long int size_t;
 
 class Particle
 {
@@ -36,6 +40,55 @@ private:
     double _y;
     double _z;
     double _volume;
+
+};
+
+class System
+{
+public:
+
+    /**
+     * @brief Creates an empty system with a random number generator
+     *        initialized according to the given seed.
+     *
+     * @param seed Seed for the random number generator.
+     */
+    System (size_t seed);
+
+    /**
+     * @brief Destroys the system.
+     */
+    virtual ~System ();
+
+    /**
+     * @brief Add the given particle to the system.
+     *
+     * @param particle Particle to add.
+     */
+    void add (const Particle& particle);
+
+    /**
+     * @brief Creates a particle given the coordinates and volume
+     *        then it adds it to the system.
+     *
+     * @param x x coordiante of the particle.
+     * @param y y coordiante of the particle.
+     * @param z z coordiante of the particle.
+     * @param vol volume of the particle.
+     */
+    void add (double x, double y, double z, double vol);
+
+    /**
+     * @brief Returns the number of particles currently on the system.
+     *
+     * @return Number of particles.
+     */
+    size_t size () const;
+
+private:
+    std::vector<Particle> _particles;
+    std::mt19937_64 _generator;
+    size_t _seed;
 
 };
 

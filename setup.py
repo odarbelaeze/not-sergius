@@ -18,6 +18,8 @@ setup(
                   library_dirs=library_dirs,
                   libraries=libraries,
                   include_dirs=include_dirs,
-                  depends=[]),
+                  extra_compile_args=["-std=c++11"],
+                  depends=[],
+                  ),
     ],
 )
