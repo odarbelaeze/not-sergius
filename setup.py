@@ -1,8 +1,8 @@
 from distutils.core import setup
 from distutils.extension import Extension
 
-include_dirs = ["/usr/include/boost", "include"]
-libraries = ["boost_python3"]
+include_dirs = ["/usr/include/boost", "/usr/local/include", "include"]
+libraries = ["boost_python-py34"]
 library_dirs = ["/usr/lib"]
 
 system_files = [
